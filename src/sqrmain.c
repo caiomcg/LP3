@@ -1,4 +1,4 @@
-int sum(int sum_even);
+#include "sumdata.h"
 
 int main(void) {
 	int a = sum(1);

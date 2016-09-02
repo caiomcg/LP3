@@ -11,7 +11,7 @@ $(FILE).o: $(FILE).c
 	$(CC) $(CFLAGS) -S $(FILE).i
 	$(CC) $(CFLAGS) -c $(FILE).s
 
-executable: $(FILE)
+executable:
 	@echo '>>> Building executable.'
 	$(CC) $(CFLAGS) $(FILE) -o $(OUT)
 
