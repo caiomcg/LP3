@@ -1,14 +1,21 @@
-CC = gcc
-CFLAGS =  -Wall -Werror -pedantic -O2 -std=c99
+CC ?= gcc
 FILE ?= sum
 OUT ?= executable
 WAT = -fno-asynchronous-unwind-tables
 
+ifeq ($(CC), g++)
+CFLAGS = -Wall -Werror -pedantic -O2 -std=c++11
+TAIL = cpp
+else
+CFLAGS = -Wall -Werror -pedantic -O2 -std=c99
+TAIL = c
+endif
+
 all: $(FILE).o
 	@echo '>>> Building all'
 
-$(FILE).o: $(FILE).c
-	$(CC) $(CFLAGS) -E $(FILE).c > $(FILE).i
+$(FILE).o: $(FILE).$(TAIL)
+	$(CC) $(CFLAGS) -E $(FILE).$(TAIL) > $(FILE).i
 	$(CC) $(CFLAGS) $(WAT) -S $(FILE).i
 	$(CC) $(CFLAGS) -c $(FILE).s
 

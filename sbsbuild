@@ -1,7 +1,0 @@
-gcc -Wall -Werror -E sum.c > sum.i
-
-gcc -Wall -Werror -S sum.i
-
-gcc -Wall -Werror -c sum.s
-
-gcc -Wall -Werror sum.o -o sum
